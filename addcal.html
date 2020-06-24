@@ -1,0 +1,60 @@
+<html>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+<body>
+<center><h2>TALLY<H2></center>
+   
+       
+	   <table class="computer">
+    <tbody >
+ 
+		 
+         <div><tr><th>Qty</th>      : <td><input type = "number" name = "qty" class = "js-qty"><br></td></tr>
+        <tr><th>Price</th>     : <td><input type = "number" name = "price" class = "js-price"><br></td></tr>
+         <tr><th>Tax %</th>    : <td><input type = "number" name = "taxperc" class = "js-taxperc"><br></td></tr>
+        <tr><th>Amount</th>    : <td><input type = "text" name = "amount" class = "js-amount" readonly><br></td></tr>
+         <tr><th>Tax </th>     : <td><input type = "text" name = "tax" class = "js-tax" readonly><br></td></tr>
+      <tr><th>Total Amoun</th> : <td><input type = "text" name = "total" class = "js-total" readonly><br></td></tr>
+        <tr><th>Action</th>    :<td> <button class = "js-calculate">Calculate</button></td></tr>
+		<tr><th>add </th>      : <td><button class = "add">add</button></td></tr>
+   <tbody>
+</table>
+
+
+<script>
+$(document).ready(function(){
+    $(".js-calculate").click(function(){
+        var qty = $(".js-qty").val();
+        var price = $(".js-price").val();
+        var tax_percentage = $(".js-taxperc").val();
+        var amount = qty * price;
+        var tax = (amount/100)*tax_percentage;
+        var total = amount + tax;
+        $(".js-amount").val(amount);
+        $(".js-tax").val(tax);
+        $(".js-total").val(total);
+    });
+	$(".add").click(function() {
+	var table = $(".computer");
+	 var qty = $(".js-qty").val();
+        var price = $(".js-price").val();
+        var tax_percentage = $(".js-taxperc").val();
+        var amount = qty * price;																			
+        var tax = (amount/100)*tax_percentage;
+        var total = amount + tax;
+        $(".js-amount").val(amount);
+        $(".js-tax").val(tax);
+        $(".js-total").val(total);
+  $("table").append(table.find("tr:eq(0)").clone());
+$("table").append(table.find("tr:eq(1)").clone());
+$("table").append(table.find("tr:eq(2)").clone());
+$("table").append(table.find("tr:eq(3)").clone());
+$("table").append(table.find("tr:eq(4)").clone());
+$("table").append(table.find("tr:eq(5)").clone());
+$("table").append(table.find("tr:eq(6)").clone());
+});
+
+});
+</script>
+</body>
+</html>

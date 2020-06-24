@@ -1,0 +1,35 @@
+<html>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<body>
+<center><h2>TALLY<H2></center>
+   
+       
+    
+    
+         Qty      : <input type = "number" name = "qty" class = "js-qty"><br>
+        Price     : <input type = "number" name = "price" class = "js-price"><br>
+         Tax %    : <input type = "number" name = "taxperc" class = "js-taxperc"><br>
+        Amount    : <input type = "text" name = "amount" class = "js-amount" readonly><br>
+         Tax      : <input type = "text" name = "tax" class = "js-tax" readonly><br>
+      Total Amoun : <input type = "text" name = "total" class = "js-total" readonly><br>
+        Action    : <button class = "js-calculate">Calculate</button>
+    
+
+
+<script>
+$(document).ready(function(){
+    $(".js-calculate").click(function(){
+        var qty = $(".js-qty").val();
+        var price = $(".js-price").val();
+        var tax_percentage = $(".js-taxperc").val();
+        var amount = qty * price;
+        var tax = (amount/100)*tax_percentage;
+        var total = amount + tax;
+        $(".js-amount").val(amount);
+        $(".js-tax").val(tax);
+        $(".js-total").val(total);
+    });
+});
+
+</script>
+</html>

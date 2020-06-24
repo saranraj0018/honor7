@@ -1,0 +1,93 @@
+
+<html>
+<head>
+</head>
+<body>
+<h2>Registration Form</h2>
+<script>
+ function myfun(){
+ var correct_way = /^[A-Za-z]+$/;
+ 
+ var a = document.getElementById("User_Name").value;
+ var pass_word = document.getElementById("Pass_word").value;
+ var con = document.getElementById("con_pass").value;
+ var mail = document.getElementById("Email_Id").value;
+ var mab = document.getElementById("mobile").value;
+ if(a==""){
+ document.getElementById("Massage").innerHTML="**please fill the name";
+ return false;
+ }
+ if(a.length<3){
+ document.getElementById("Massage").innerHTML="username must be 3char";
+ return false;
+ }
+ if(a.length>20){
+ document.getElementById("Massage").innerHTML="username must be less then 20char";
+ return false;
+ }
+ if(a.match(correct_way))
+ true;
+ else{
+ document.getElementById("Massage").innerHTML="only alphabet";
+ return false;
+ 
+ }
+ if(pass_word ==""){
+ document.getElementById("call").innerHTML="**please fill the password";
+ return false;
+ }
+ if(pass_word.length<5){
+ document.getElementById("call").innerHTML="password length must be greater then 5 char";
+ return false;
+ }
+ if(pass_word.length>20){
+ document.getElementById("call").innerHTML="password must be smaller then 5 char";
+ return false;
+ }
+ if(pass_word!=con){
+ document.getElementById("call2").innerHTML="password are not same";
+ return false;
+ }
+ if(mail==""){
+ document.getElementById("call3").innerHTML="enter the mail id";
+ return false;
+ }
+ if(mail.indexOf('@')<=0){
+ document.getElementById("call3").innerHTML="invaild @ position";
+ return false;
+ }
+ if(mab==""){
+ document.getElementById("call4").innerHTML="**please fill the mobile number";
+ return false;
+ }
+ if(mab.length<10){
+ document.getElementById("call4").innerHTML="**mobile num must be 10 digit";
+ return false;
+ }
+ if(mab.length>10){
+ document.getElementById("call4").innerHTML="**mobile num must be 10 digit";
+ return false;
+ }
+ }
+</script>
+
+<form onsubmit="return myfun()">
+UserName : <input type="text" id="User_Name" >
+<span id="Massage"></span>
+<br></br>
+password : <input type="password" id="Pass_word" value="">
+<span id="call" style="color:red"></span>
+<br></br>
+conformpassword : <input type="password" id="con_pass" value="">
+<span id="call2"></span>
+<br></br>
+email id : <input type="text" id="Email_Id" value="">
+<span id="call3"></span>
+<br></br>
+mobile number : <input type="number" id="mobile" value="">
+<span id="call4"></span>
+<br></br>
+<input type="submit" value="submit"></input>
+</form>
+</body>
+</html>
