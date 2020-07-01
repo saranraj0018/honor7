@@ -1,0 +1,25 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<select name="status" id ="combo">
+      <option value="_">Please choose..</option>
+      
+        <option  value="Process">employe</option>
+        <option  value="Delivered">customer</option>
+      </select>
+ <tr>
+ <td>User name</td>
+ <input type ="text">
+ <td class="postage" >Password:</td>
+ <input type="text" name="postage" id="textbox" >
+
+<script>
+$(document).ready(function () {
+    var $input = $('input[name=postage]');
+    $input.attr('disabled', 'disabled');
+    $('select[name=status]').on('change', function () {
+        $input.attr('disabled', $(this).val() != "Process");
+    });
+});
+</script>
+
+</html>
