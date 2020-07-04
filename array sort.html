@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2> Array </h2>
+
+
+<div id="sa">
+<button onclick="myFunction()">Try it</button>
+<input type="text" id="fine" value="">
+</div>
+<p id="raj"></p>
+<p id="saran"></p> 
+<p id="leno"></p>
+<p id="com"></p>
+<p id="hp"></p>
+<script>
+function myFunction(){
+var s = document.getElementById("fine").value;
+var a = s.split(",");
+var x=a.sort();
+var html="";
+document.getElementById("sa").innerHTML=s.split(",");
+document.getElementById("raj").innerHTML=a.length;
+document.getElementById("hp").innerHTML=x;
+for(var i = 0; i<a.length; i++){
+
+ html += (i +"="+ a[i]+"<br>");
+
+}
+document.getElementById("saran").innerHTML=html;
+if(a.length%2==0)
+{
+document.getElementById("leno").innerHTML=("even"+ " = " + a.length);
+}
+else
+{
+document.getElementById("com").innerHTML=("odd"+ " = " + a.length);
+}
+
+
+}
+
+
+
+
+</script>
+
+</body>
+</html>
