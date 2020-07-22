@@ -1,24 +1,71 @@
-<html>
-<body>
 <?php
+$status=$_GET["status"];
 $user="root";
 $pass="";
 $db="sharan";
-if(isset($_POST["btnsignup"])) {
+$status=$_GET["status"];
+if($status=="disp"){
+$conn=mysqli_connect('localhost',$user,$pass,$db) or die("unable to connect").mysqli_connect_error();
+echo "connected";
+
+mysqli_select_db($conn,"sharan");
+$res=mysqli_query($conn,"select * from js");
+echo "<table>";
+while($row=mysqli_fetch_array($res))
+{
+	echo "<tr>";
+	echo "<td>"; echo $row["id"]; echo "</td>";
+	echo "<td>"; ?><div id="name<?php echo $row["id"]; ?>"> <?php echo $row["name"]; ?> </div> <?php  echo "</td>";
+	echo "<td>"; ?><div id="age<?php echo $row["id"]; ?>"> <?php echo $row["age"]; ?> </div> <?php echo "</td>"; 
+	echo "<td>"; ?> <input type="button" id="<?php echo $row["id"]; ?>" name="<?php echo $row["id"]; ?>" value="delete" onClick="delete1(this.id)"><?php echo "</td>";
+	echo "<td>"; ?>               
+	<input type="button" id="<?php echo $row["id"]; ?>" name="<?php echo $row["id"]; ?>" value="edit" onclick="aa(this.id)">
+	<input type="button" id="update<?php echo $row["id"]; ?>" name="<?php echo $row["id"]; ?>" value="update" style="visibility:hidden" onclick="bb(this.name)">
+	 <?php echo "</td>";
 	
 
-$conn=mysqli_connect('localhost',$user,$pass,$db) or die("unable to connect").mysqli_connect_error();
-echo "super sharan";
-$sql = "INSERT INTO sharan(FIRST_NAME,MAIL_ID,PASSWORD,CONFORM_PASSWORD)VALUES('".$_POST["fname"]."','".$_POST["email"]."','".$_POST["password"]."','".$_POST["confirm_password"]."')";
+	
+	
+	echo "</tr>";
+	
+}
+echo "</table>";
+}
+if($status=="update")
+{
+	$id=$_GET["id"];
+	$name=$_GET["name"];
+	$age=$_GET["age"];
+	
+	$name=trim($name);
+	$age=trim($age);
+	
 
-if (mysqli_query($conn,$sql)) {
-	echo "new record create successfully";
+
+$res=mysqli_query($conn,"update js set name='$name',age='$age' where id='$id'");
+	
+} 
+if($status=="delete")
+{
+	$id=$_GET["id"];
+	
+	
+	$conn=mysqli_connect('localhost',$user,$pass,$db) or die("unable to connect").mysqli_connect_error();
+echo "connected";	
+mysqli_select_db($conn,"sharan");
+$res=mysqli_query($conn,"DELETE FROM js WHERE id=$id");	
 }
-else{
-	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-mysqli_close($conn);
+
+if($status=="ins")
+{
+$nm=$_GET["nm"];
+$ct=$_GET["ct"];
+
+$conn=mysqli_connect('localhost',$user,$pass,$db);
+mysqli_select_db($conn,"sharan");
+$res=mysqli_query($conn,"insert into js values('','$nm','$ct')");
+
+
+
 }
 ?>
-</body>
-</html>
